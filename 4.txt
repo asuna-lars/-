@@ -1,0 +1,212 @@
+Программа 1.
+#include <iostream>
+using namespace std;
+int main()
+{
+ setlocale(LC_ALL, "rus");
+ 
+ int age = 0; // будет вводить пользователь
+ int maxAge = 0; // для записи максимального количества лет
+ int minAge = 100; // для записи минимального количества лет
+ int sum = 0; // общая сумма для расчета среднего   
+ int average = 0; // для записи среднего возраста посетителей
+ int amount = 0; // количество посетителей спортзала
+ 
+ cout << "Введите количество посетителей спортзала: ";
+ cin >> amount;
+ 
+ for (int i = 0; i < amount; i++)
+ {
+ cout << "Введите возраст " << i + 1 << "-го посетителя: "; // запрос на введение числа
+ cin >> age;
+ 
+ if (age > maxAge) // если оно больше, чем хранит переменная  max
+ maxAge = age; // записываем в неё это число 
+ if (age < minAge) 
+ minAge = age;
+ 
+ sum += age; // накопление общей суммы
+ }
+ 
+ average = sum / amount; // подсчет среднего возраста
+ 
+ cout << "\nСредний возраст всех посетителей: " << average << endl;
+ cout << "\nСамый взрослый: " << maxAge << endl;
+ cout << "\nСамый молодой: " << minAge << endl;
+ 
+ return 0;
+}
+
+Программа 2.
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+ setlocale(LC_ALL, "rus");
+ 
+ int boxWithApples = 15; // количество ящиков на складе
+ int amountBoxesForSale = 0; // количество отгружаемых ящиков
+ 
+ cout << "Сейчас на складе " << boxWithApples << " ящиков с яблоками.\n\n";
+ for (int i = 1;  ; i++) // счетчик i  будет считать количество машин к погрузке
+ {
+ cout << "Сколько ящиков загрузить в " << i << "-ю машину? ";
+ cin >> amountBoxesForSale;
+ 
+ if (amountBoxesForSale > boxWithApples)
+ {
+ cout << "\nНа складе недостаточно товара!";
+ cout << "Осталось только " << boxWithApples << " ящиков\n\n";
+ i--; // уменьшить счетчик на единицу
+ }
+ else
+ {
+ boxWithApples -= amountBoxesForSale; // перезаписываем значение
+ cout << "Осталось " << boxWithApples << " ящиков.\n";
+ }
+ 
+ if (boxWithApples == 0)// если ящиков больше нет - выйти из цикла
+ { 
+ cout << "Яблоки закончились! Давай до свидания!\n";
+ break;
+ }
+ } 
+ return 0;
+}
+
+Программа 3.
+#include <iostream>
+ 
+using namespace std;
+ 
+int main()
+{
+    int startDia(0);
+    int endDia(0);
+    int suma(0);
+ 
+    cout << "Введите начало диапазона : ";
+    cin>> startDia;
+    cout <<endl;
+    cout << "Введите конец диапазона :" ;
+    cin >> endDia;
+ 
+    int i = startDia;
+ 
+    while (i <= endDia)
+    {
+        if(i % 2 !=0)
+        {
+            cout <<i << " ";
+            suma +=i;
+        }
+        i++;
+ 
+    }
+    cout <<"Сумма нечетных чисел c"<< startDia <<"по" << endDia << "= " << suma <<endl ;
+    return 0 ;
+}
+
+Программа 4.
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    setlocale(LC_ALL, "rus");
+ 
+    int height = 0; // высота треугольника
+ 
+    cout << "Введите высоту  равнобедренного треугольника: ";
+    cin >> height;
+ 
+    for (int i = 0; i < height; i++)
+    {
+        for (int j = 1; j < height - i; j++)
+        {
+            cout << ' ';
+        }   
+ 
+        for (int j = height - 2 * i; j <= height; j++)
+        {
+            cout << '^';
+        }           
+        cout << endl;
+    }
+    return 0;
+}
+
+Программа 5.
+#include <iostream>
+using namespace std;
+main() {
+    int a, m;
+    scanf("%d",&a);
+    m = a%10;
+    a = a/10;
+    while (a > 0) {
+        if (a%10 > m)
+            m = a%10;
+        a = a/10;
+    }
+    printf("%d\n", m);
+    return 0;
+}
+
+Программа 6.
+#include <iostream>
+#include <stdio.h>
+ 
+main() {
+    int n,even,odd;
+    scanf("%d",&n);
+    even = 0; // четные
+    odd = 0; // нечет.
+    while (n>0) {
+        if (n%2 == 0) even += 1;
+        else odd += 1;
+        n = n/10;
+    }
+    printf("четных - %d, нечетных - %d\n", even, odd);
+    return 0;
+}
+
+Программа 7.
+#include <iostream>
+
+using namespace std;
+
+int Fib(int i)
+
+{
+
+int value = 0;
+
+if(i < 1) return 0;
+
+if(i == 1) return 1;
+
+return Fib(i-1) + Fib(i - 2);
+
+}
+
+int main()
+
+{
+
+int i = 0;
+
+while(i < 47)
+
+{
+
+cout << Fib(i) << endl;
+
+i++;
+
+}
+
+return 0;
+
+}

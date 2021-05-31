@@ -1,0 +1,444 @@
+#include <iostream>
+using namespace std;
+ 
+void fillAndShowArray(int arrayForFilling[], int size);
+ 
+int main()
+{
+ const int SIZE1 = 8;
+ const int SIZE2 = 14;
+ 
+ int arrayForFilling1 [SIZE1] = {};
+ int arrayForFilling2 [SIZE2] = {};
+ 
+ fillAndShowArray(arrayForFilling1, SIZE1);
+ fillAndShowArray(arrayForFilling2, SIZE2);
+ 
+ return 0;
+}
+ 
+void fillAndShowArray(int arrayForFilling[], int size)
+{
+ for (int i = 0; i < size; i++)
+ {
+ arrayForFilling[i] = i + 1;
+ cout << arrayForFilling[i] << "  ";
+ }
+ cout << endl;
+}
+
+
+
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+ 
+using namespace std;
+ 
+const int  SIZE = 5;
+ 
+void fillAndShowArray(int[][SIZE], const int size);
+int findMinElement(int[][SIZE], const int size);
+int findMaxElement(int[][SIZE], const int size);
+ 
+int main()
+{
+ setlocale(LC_ALL, "rus");
+ 
+ int matrix[SIZE][SIZE] = {};
+ 
+ fillAndShowArray(matrix, SIZE); //заполняем и показываем массив
+ 
+ cout << endl;
+ cout << "Минимум: " << findMinElement(matrix, SIZE) << endl;
+ cout << "Максимум: " << findMaxElement(matrix, SIZE) << endl;
+ 
+ return 0;
+}
+ 
+void fillAndShowArray(int arr[][SIZE], const int size)
+{
+ for (int i = 0; i < size; i++)
+ {
+ cout << "| ";
+ for (int j = 0; j < size; j++)
+ {
+ arr[i][j] = 30 + rand() % 31;
+ 
+ cout << arr[i][j] << " ";
+ }
+ cout << " |" << endl;
+ }
+}
+ 
+int findMinElement(int arr[][SIZE], const int size)
+{
+ int min = arr[0][0];
+ for (int i = 0; i < size; i++)
+ {
+ for (int j = 0; j < size; j++)
+ {
+ if (arr[i][j] < min)
+ min = arr[i][j];
+ }
+ }
+ return min;
+}
+ 
+int findMaxElement(int arr[][SIZE], const int  size)
+{
+ int max = arr[0][0];
+ for (int i = 0; i < size; i++)
+ {
+ for (int j = 0; j < size; j++)
+ {
+ if (arr[i][j] > max)
+ max = arr[i][j];
+ }
+ }
+ return max;
+}
+
+
+
+
+
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+ 
+using namespace std;
+ 
+bool calcFirstMove(); 
+void drowCube(int res); 
+int computerOrPlayerThrow(); 
+void showIntermediateResult(int pointsOfComputer, int pointsOfUser, int numberThrow); 
+ 
+int main()
+{
+ setlocale(LC_ALL, "rus");
+ srand(time(NULL));
+ 
+ int playerScore = 0; // для накопления очков
+ int computerScore = 0;
+ int whoMove = 0; 
+ char userName[16] = {};
+ 
+ cout << "Ваше имя (латиницей): ";
+ cin >> userName;
+ 
+ whoMove = calcFirstMove(); // если будет 0 - ходит игрок, 1 - ходит компьютер
+ 
+ for (int i = 0; i < 4; ++i)
+ {
+ for (int j = 0; j < 2; j++)
+ {
+ if (whoMove)
+ {
+ cout << "\nХодишь ты. ";
+ playerScore += computerOrPlayerThrow();
+ }
+ else
+ {
+ cout << "\nХодит компьютер. ";
+ computerScore += computerOrPlayerThrow();
+ }
+ whoMove = !whoMove; // инверсия
+ }
+ 
+ showIntermediateResult(computerScore, playerScore, i); 
+ } 
+ 
+ if (computerScore > playerScore)
+ {
+ cout << "\n\nПобедитель этой игры - КОМПЬЮТЕР\n!";
+ cout << "Желаем успехов в следующий раз.\a\a\a\a\a\n\n";
+ }
+ else if (computerScore < playerScore)
+ {
+ cout << "\n\nПобедитель этой игры - " << userName << "!!! ";
+ cout << "Поздравляем!!!\a\a\a\a\a\n\n";
+ }
+ else
+ {
+ cout << "\n\nВ этой игре НИЧЬЯ\a\a\a\a\a\n\n";
+ }
+ 
+ return 0;
+}
+ 
+bool calcFirstMove() // генерирует и возвращает случайное число 0 или 1
+{
+ return rand() % 2;
+}
+ 
+void showIntermediateResult(int computerScore, int playerScore, int numberThrow) {
+ cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+ cout << "Комп: " << computerScore << "  |||  Ты:" << playerScore << endl;
+ cout << "После " << numberThrow + 1 << "-го броска ";
+ if (computerScore > playerScore)
+ cout << " выигрывает компьютер!!!\n";
+ else if (computerScore < playerScore)
+ cout << " выигрываете Вы!!!\n";
+ else cout << " ничья!!!\n";
+ cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+}
+ 
+// вызывается в функции computerOrPlayerThrow()
+void drowCube(int res) 
+{
+ switch (res)
+ {
+ case 1:
+ cout << "@@@@@@@\n";
+ cout << "@@@@@@@\n";
+ cout << "@@@ @@@\n";
+ cout << "@@@@@@@\n";
+ cout << "@@@@@@@\n";
+ break;
+ case 2:
+ cout << "@@@@@@@\n";
+ cout << "@ @@@@@\n";
+ cout << "@@@@@@@\n";
+ cout << "@@@@@ @\n";
+ cout << "@@@@@@@\n";
+ break;
+ case 3:
+ cout << "@@@@@@@\n";
+ cout << "@ @@@@@\n";
+ cout << "@@@ @@@\n";
+ cout << "@@@@@ @\n";
+ cout << "@@@@@@@\n";
+ break;
+ case 4:
+ cout << "@@@@@@@\n";
+ cout << "@ @@@ @\n";
+ cout << "@@@@@@@\n";
+ cout << "@ @@@ @\n";
+ cout << "@@@@@@@\n";
+ break;
+ case 5:
+ cout << "@@@@@@@\n";
+ cout << "@ @@@ @\n";
+ cout << "@@@ @@@\n";
+ cout << "@ @@@ @\n";
+ cout << "@@@@@@@\n";
+ break;
+ case 6:
+ cout << "@@@@@@@\n";
+ cout << "@ @ @ @\n";
+ cout << "@@@@@@@\n";
+ cout << "@ @ @ @\n";
+ cout << "@@@@@@@\n\n";
+ break;
+ }
+}
+ 
+int computerOrPlayerThrow() // реализация броска пары кубиков и возврат полученных очков
+{
+ int result = 0;
+ char c = 0;
+ 
+ cout << "Нажми Y и Enter, чтобы бросить кубики: "; 
+ do
+ {
+ cin.sync(); // очистка буфера
+ cin >> c;
+ } while (c != 'y' && c != 'Y');
+ 
+ int tmp = 0; // для накопления очков пары брошенных кубиков
+ for (int i = 0; i < 2; ++i) {
+ tmp = 1 + rand() % 6;
+ drowCube(tmp);
+ result += tmp;
+ cout << endl;
+ }
+ 
+ cout << "Всего на кубиках " << result << " очков";
+ return result;
+}
+
+
+
+
+
+#include <iostream>
+#include <string>
+
+using std::cout;
+using std::cin;
+using std::endl;
+
+int main()
+{    
+        int arr[10];
+
+        // Заполняем массив с клавиатуры
+        for (int i = 0; i < 10; i++) {
+            cout << "[" << i + 1 << "]" << ": ";
+            cin >> arr[i];
+        }
+
+        // И выводим заполненный массив.
+        cout << "\nВаш массив: ";
+
+        for (int i = 0; i < 10; ++i) {
+            cout << arr[i] << " ";
+        }
+
+        cout << endl;
+
+        return 0;
+}
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int main()
+{
+  int a[5]; // объявлен массив a из 5 элементов
+  int i;
+  // Ввод элементов массива
+  for (i = 0; i<5; i++) 
+  {
+    printf("a[%d] = ", i);
+    scanf("%d", &a[i]); // &a[i] - адрес i-го элемента массива
+  }
+  // Вывод элементов массива
+  for (i = 0; i<5; i++)
+    printf("%d ", a[i]); // пробел в формате печати обязателен
+  getchar(); getchar();
+  return 0;
+}  
+
+
+
+
+
+#include <stdio.h>
+int main()
+{
+  int a[2][3] = { 1, 2, 3, 4, 5, 6 };
+  printf("%d %d %d\n", a[0][0], a[0][1], a[0][2]);
+  printf("%d %d %d\n", a[1][0], a[1][1], a[1][2]);
+  getchar();
+  return 0;
+}
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+int main()
+{
+  int a[2][3]; // массив из 2 строк и 3 столбцов
+  int i, j;
+  // Ввод элементов массива
+  for (i = 0; i<2; i++)  // цикл по строкам
+  {
+    for (j = 0; j<3; j++) // цикл по столбцам
+    {
+      printf("a[%d][%d] = ", i, j);
+      scanf("%d", &a[i][j]);
+    }
+  }
+  // Вывод элементов массива
+  for (i = 0; i<2; i++)  // цикл по строкам
+  {
+    for (j = 0; j<3; j++) // цикл по столбцам
+    {
+      printf("%d ", a[i][j]);
+    }
+    printf("\n"); // перевод на новую строку
+  }
+  getchar(); getchar();
+  return 0;
+}
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+// Функция обмена
+void change(int *x, int n)
+{
+  // x - указатель на массив (адрес массива)
+  // n - размер массива
+  int i;
+  int max, index;
+  max = x[0];
+  index = 0;
+  // Поиск максимального элемента
+  for (i = 1; i<n; i++)
+  {
+    if (x[i]>max)
+    {
+      max = x[i];
+      index = i;
+    }
+  }
+  // Обмен
+  x[index] = x[0];
+  x[0] = max;
+}
+// Главная функция
+int main()
+{
+  int a[10];
+  int i;
+  for (i = 0; i<10; i++)
+  {
+    printf("a[%d] = ", i);
+    scanf("%d", &a[i]);
+  }
+  change(a, 10);  // вызов функции обмена
+          // Вывод элементов массива
+  for (i = 0; i<10; i++)
+    printf("%d ", a[i]);
+  getchar();
+  getchar();
+  return 0;
+}
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+// Функция вычисления произведения чётных элементов
+int func(int *x, int n)  // произведение четных элементов
+{
+  int p = 1;  // начальное значение произведения
+  int i;
+  for (i = 0; i<n; i++) 
+  {
+    if (x[i] % 2 == 0)  // остаток от деления на 2 равен 0?
+      p = p * x[i];
+  }
+  return p;
+}
+// Главная функция
+int main() 
+{
+  int a[5]; // объявлен массив a из 5 элементов
+  int i;
+  int pr;
+  // Ввод элементов массива
+  for (i = 0; i<5; i++) 
+  {
+    printf("a[%d] = ", i);
+    scanf("%d", &a[i]); // &a[i] - адрес i-го элемента массива
+  }
+  pr = func(a, 5); // вычисление произведения
+  printf("\n pr = %d", pr); // вывод произведения четных элементов
+  getchar();   getchar();
+  return 0;
+}
+
+
+

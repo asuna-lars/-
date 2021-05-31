@@ -1,0 +1,165 @@
+Программа 1
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ setlocale(LC_ALL,"rus");
+
+ int digit2 = 0;
+ double digit = 0;
+ char symbol1 = 0;
+ bool trueOrFalse = 0;
+
+ cout << "Введите целое число: ";
+ cin >> digit2;
+ cout << "Введите вещественное число: ";
+ cin >> digit;
+ cout << "Введите символ: ";
+ cin >> symbol1;
+ // в переменную типа bool с помощью cin можно ввести 
+ // только числа 0 (интерпретируется как false) и 1 (true)
+ cout << "Введите 0 или 1: ";
+ cin >> trueOrFalse;
+
+ cout << endl << endl;
+ cout << "Целое число: " << digit2 << endl;
+ cout << "Вещественное число: " << digit << endl;
+ cout << "Символ: " << symdol1 << endl;
+ cout << "bool: " << trueOrFalse << endl;
+ 
+ return 0;
+}
+
+
+Программа 2
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  setlocale(LC_ALL,"rus");
+
+  char letter1 = 0;
+  char letter2 = 0;
+  char letter3 = 0;
+  char letter4 = 0;
+  char letter5 = 0;
+  
+  cout << "Введите слово из 5-ти букв: " << endl;
+  cin >> letter1 >> letter2 >> letter3 >> letter4 >> letter5;
+
+  cout << "Вы ввели: ";
+  cout << letter1 << letter2 << letter3 << letter4 << letter5;
+  cout << endl;
+
+  return 0;
+}
+
+Программа 3
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ setlocale(LC_ALL,"rus");
+
+int digit = 0;
+double digit1 = 0;
+
+cout << "Введите первое число: ";
+cin >> digit;
+cout << "Введите второе число: ";
+cin >> digit1;
+
+cout << digit << " + " << digit1 << " = " << digit + digit1 << endl;
+cout << digit << " - " << digit1 << " = " << digit - digit1 << endl;
+cout << digit << " * " << digit1 << " = " << digit * digit1 << endl;
+
+cout << "Среднее арифметическое: ";
+cout << digit << " + " << digit1 << " / " << 2 << " = ";
+cout << (digit + digit1)/2 << endl;
+
+cout << endl;
+
+return 0;
+}
+
+Программа 4
+#include <iostream>
+using namespace std;
+
+int main()
+{
+ setlocale(LC_ALL,"rus");
+
+ int n,m,cout = 0 ;
+ cin >> n >> m;
+
+ count = m / n;
+ m %= n;
+ if (m)
+  count++;
+ cout << count;
+
+     return 0;
+}
+
+Программа 5
+#include <iostream>
+
+using namespace std;
+int main()
+{
+   int a=56;
+   int P=4*a;
+   int S=a*a;
+
+   cout << "P= " << P << endl;
+   cout << "S= " << S << endl;
+
+   return 0;
+}
+
+Программа 6
+#include <iostream>
+
+using namespace std;
+int main()
+{
+   int a=25;
+   int b=56;
+   int G=(a*a)+(b*b);
+
+   cout << "G= " << G << endl;
+
+   return 0;
+}
+
+Программа 7
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+ setlocale(LC_ALL, "rus");
+ 
+ 
+ int cups = 10; // количество чашек
+ int spoons = cups; // количество ложек равно кол-тву чашек
+ int saucers = cups; // блюдца
+ 
+ // или можно так записать
+ // int cups, spoons, saucers;
+ // cups = spoons = saucers = 10;
+ 
+ int amount = cups + spoons + saucers;  // общее количество
+ 
+ cout << "Всего " << amount << " предметов" << endl;
+ 
+ return 0;
+}
+
+
+
+ 

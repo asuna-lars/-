@@ -1,0 +1,130 @@
+Программа 1.
+#include <iostream>
+
+ 
+using namespace std;
+int main(int argc, char** argv) 
+    {
+    setlocale(LC_ALL, "rus");
+    int x,y;
+    cout<<"\n Введите X: "; cin>>x;
+    cout<<"\n Введите Y: "; cin>>y;
+    if(x%2 == 0)cout<<"\n Четное"<<endl;
+    else cout<<"\n Не четное"<<endl;
+    
+    if(y%2 == 0)cout<<"\n Четное"<<endl;
+    else cout<<"\n Не четное"<<endl;
+    
+    return 0;   
+    }
+
+Программа 2.
+#include <iostream>
+using namespace std;
+int main() {
+    int a,b,c;
+    cin>>a>>b>>c;
+    cout<<(a+b+c)-max(a,max(b,c))-min(a,(b,c));
+    return 0;
+}
+
+Программа 3.
+#include <iostream>
+ 
+main() {
+    int a,b;
+    scanf("%d%d",&a,&b);
+    if (a%b == 0) printf("%d делится на %d", a, b);
+    else {
+        printf("%d НЕ делится на %d\n", a, b);
+        printf("Остаток: %d", a%b);
+    }
+    printf("\nЧастное: %d\n", a/b);
+    return 0;
+}
+
+Программа 4.
+#include <iostream>
+ 
+main() {
+    int y;
+    scanf("%d",&y);
+    if (y%4 != 0) printf("Обычный");
+    else
+        if (y%100 == 0 && y%400 != 0) printf("Обычный");
+        else printf("Високосный");
+    printf("\n");
+    return 0;
+}
+
+Программа 5.
+#include <iostream>
+using namespace std;
+ 
+int main()
+{
+    int x, y;
+    cin >> x >> y;
+    if (x > 0)
+    {
+        if (y > 0)
+        {
+            cout << endl << "1";
+        }
+        else
+            cout << endl << "4";
+    }
+    else if (y > 0)
+         {
+            cout << endl << "2";
+         }
+         else
+            cout << endl << "3";
+    return 0;
+}
+
+Программа 6.
+#include <iostream>
+using namespace std;
+int main() {
+  int a,b,c;
+    cin>>a>>b>>c;
+    if(a>b&&a>c){
+        cout<<a;
+    }else if(b>a&&b>c){
+        cout<<b;
+    }else if(c>a&&c>b){
+        cout<<c;
+    }else if(b=c&&b>a){
+        cout<<c;
+    }else if(a=b&&b>c){
+        cout<<b;
+    }else if(a=c&&a>b){
+        cout<<a;
+    }else{
+        cout<<a;
+    }
+  return 0;
+}
+
+Программа 7.
+#include <iostream>
+#include <cmath>
+ 
+ 
+int main()
+{   setlocale(0, "");
+ 
+    int length; std::cin >> length;
+    int radius; std::cin >> radius;
+ 
+    //if(Координаты центров совпали?)
+    if(length == 2*radius)
+    {   std::cout << "Круг может быть вписан в квадрат.\n";
+    }
+    else if(sqrt(length*length/2) == radius)
+    {   std::cout << "Квадрат может быть вписан в круг.\n";
+    }
+    else std::cout << "Мимо.\n"; 
+    return 0;
+}
